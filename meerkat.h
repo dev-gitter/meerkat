@@ -62,27 +62,18 @@ enum mg_event {
   MG_POLL = 100,  // Callback return value is ignored
   MG_CONNECT,     // If callback returns MG_FALSE, connect fails
   MG_AUTH,        // If callback returns MG_FALSE, authentication fails
-  MG_REQUEST,     // If callback returns MG_FALSE, Mongoose continues with req
-  MG_REPLY,       // If callback returns MG_FALSE, Mongoose closes connection
-  MG_RECV,        // Mongoose has received POST data chunk.
+  MG_REQUEST,     // If callback returns MG_FALSE, Meerkat continues with req
+  MG_REPLY,       // If callback returns MG_FALSE, Meerkat closes connection
+  MG_RECV,        // Meerkat has received POST data chunk.
                   // Callback should return a number of bytes to discard from
                   // the receive buffer, or -1 to close the connection.
   MG_CLOSE,       // Connection is closed, callback return value is ignored
   MG_WS_HANDSHAKE,  // New websocket connection, handshake request
   MG_WS_CONNECT,  // New websocket connection established
-  MG_HTTP_ERROR   // If callback returns MG_FALSE, Mongoose continues with err
+  MG_HTTP_ERROR   // If callback returns MG_FALSE, Meerkat continues with err
 };
 typedef int (*mg_handler_t)(struct mg_connection *, enum mg_event);
 
-// Websocket opcodes, from http://tools.ietf.org/html/rfc6455
-enum {
-  WEBSOCKET_OPCODE_CONTINUATION = 0x0,
-  WEBSOCKET_OPCODE_TEXT = 0x1,
-  WEBSOCKET_OPCODE_BINARY = 0x2,
-  WEBSOCKET_OPCODE_CONNECTION_CLOSE = 0x8,
-  WEBSOCKET_OPCODE_PING = 0x9,
-  WEBSOCKET_OPCODE_PONG = 0xa
-};
 
 // Server management functions
 struct mg_server *mg_create_server(void *server_param, mg_handler_t handler);
@@ -104,11 +95,6 @@ size_t mg_send_data(struct mg_connection *, const void *data, int data_len);
 size_t mg_printf_data(struct mg_connection *, const char *format, ...);
 size_t mg_write(struct mg_connection *, const void *buf, int len);
 size_t mg_printf(struct mg_connection *conn, const char *fmt, ...);
-
-size_t mg_websocket_write(struct mg_connection *, int opcode,
-                          const char *data, size_t data_len);
-size_t mg_websocket_printf(struct mg_connection* conn, int opcode,
-                           const char *fmt, ...);
 
 void mg_send_file(struct mg_connection *, const char *path, const char *);
 void mg_send_file_data(struct mg_connection *, int fd);
