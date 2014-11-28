@@ -1,7 +1,7 @@
 # Meerkat Lightweight Embedded Web Server
 
-Meerkat is a lightweight embedded web server library.
-It is a stripped-down version of Mongoose Web Server library.
+Lightweight Web Server for your application needs.
+Turn anything into a web server fast.
 
 - [Documentation](http://cesanta.com/docs.shtml) - configuration options and API reference
 - [Examples](https://github.com/cesanta/mongoose/examples) - example programs
@@ -14,7 +14,7 @@ Check out Fossa - our [embedded multi-protocol library](https://github.com/cesan
 - Works on Windows, Mac, UNIX/Linux, iPhone, Android eCos, QNX
 and many other platforms
 - Digest auth, URL rewrite, file blacklist
-- Custom error pages, Virtual hosts, IP-based ACL, HTTP/HTTPS client
+- Custom error pages, Virtual hosts, IP-based ACL, HTTP client
 - Simple and clean
   [embedding API](meerkat.h). The source code is in single
   [meerkat.c](meerkat.c) file to make embedding easy
@@ -22,6 +22,8 @@ and many other platforms
 - Asynchronous, non-blocking core supporting single- or multi-threaded usage
 - Stable, mature and tested, has several man-years invested
   in continuous improvement and refinement
+
+Note: Meerkat does NOT support HTTPS, CGI, SSI, Websocket.
 
 # Licensing
 
