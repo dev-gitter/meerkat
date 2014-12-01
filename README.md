@@ -23,7 +23,7 @@ and many other platforms
 - Stable, mature and tested, has several man-years invested
   in continuous improvement and refinement
 
-Note: Meerkat does NOT support HTTPS, CGI, SSI, Websocket.
+Note: Meerkat does NOT support HTTPS, CGI, SSI, Websocket. So we advice to consider using [Mongoose Library](https://github.com/cesanta/mongoose) if you require this functionality.
 
 # Licensing
 
